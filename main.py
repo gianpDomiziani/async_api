@@ -42,14 +42,8 @@ app = FastAPI()
 
 @app.post('/predict/')
 async def predict(data: UploadFile = File(...)):
-    start = time()
     contents = await data.read()
-    end = time() - start
-    print(end)
     return {"file name": data.filename}
-
-
-
 
 @app.post('/item')
 async def new_item(item: Item = Body(..., embed=True)):
